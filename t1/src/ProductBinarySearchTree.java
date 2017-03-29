@@ -33,7 +33,7 @@ public class ProductBinarySearchTree {
         	Node newNode = new Node(element);
             this.root = newNode;
         }else {
-            this.insert(element, this.root, null);
+            this.insert(element, this.root, this.root);
         }
     }
     
@@ -41,15 +41,15 @@ public class ProductBinarySearchTree {
         if(node == null){
             Node newNode = new Node(element);
             newNode.father = parent;
-            if(element.getId() < parent.element.getId()){
+            if(element.compareTo(parent.element) == -1){
                 parent.left = newNode;
             }else{
                 parent.right = newNode;
             }
         }else{
-            if(element.getId() < node.element.getId()){
+        	if(element.compareTo(parent.element) == -1){
                 insert(element, node.left, node);
-            }else if(element.getId() > node.element.getId()){
+            }else{
                 insert(element, node.right, node);
             }
         }
@@ -57,7 +57,7 @@ public class ProductBinarySearchTree {
     
     public void preorder(Node root) {
         if(root !=  null) {
-            System.out.printf("%d ",root.element);
+            System.out.printf("%d ",root.element.getId());
             preorder(root.left);
             preorder(root.right);
         }
@@ -72,11 +72,11 @@ public class ProductBinarySearchTree {
             return null;
         }
         Node answer = node;
-        if(element == node.element){
+        if(element.compareTo(node.element) == 0){
             answer = node;
-        }else if(element.getId() < node.element.getId()){
+        }else if(element.compareTo(node.element) == -1){
             answer = find(element, node.left);
-        }else if(element.getId() > node.element.getId()){
+        }else{
             answer = find(element, node.right);
         }
         return answer;
@@ -89,19 +89,19 @@ public class ProductBinarySearchTree {
         }
 
         if(target.left == null && target.right == null){//Target has no children
-            if(target.father.left.element.getId() == target.element.getId()){
+            if(target.father.left.element.compareTo(target.element) == 0){
                 target.father.left = null;
             }else{
                 target.father.right = null;
             }
         }else if(target.left != null && target.right == null){//Target has left child
-            if(target.father.left.element.getId() == target.element.getId()){
+        	if(target.father.left.element.compareTo(target.element) == 0){
                 target.father.left = target.left;
             }else{
                 target.father.right = target.left;
             }
         }else if(target.left == null && target.right != null){//Target has right child
-            if(target.father.left.element.getId() == target.element.getId()){
+        	if(target.father.left.element.compareTo(target.element) == 0){
                 target.father.left = target.right;
             }else{
                 target.father.right = target.right;
