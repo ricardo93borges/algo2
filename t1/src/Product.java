@@ -18,16 +18,18 @@ public class Product implements Comparable<Product>{
 
     @Override
 	public int compareTo(Product o) {
-    	if (this.id < o.id) {
+    	if (this.id < o.getId()) {
             return -1;
         }
-        if (this.id > o.id) {
+        if (this.id > o.getId()) {
             return 1;
         }
         return 0;
 	}
-
-
+    
+	public int compareNameTo(Product o) {
+    	return this.name.compareToIgnoreCase(o.getName());
+	}
 
 	public int getId() {
         return id;
