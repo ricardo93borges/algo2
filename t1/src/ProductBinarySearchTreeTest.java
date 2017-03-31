@@ -15,7 +15,11 @@ public class ProductBinarySearchTreeTest {
 			t.insert(products.get(i));
 		}
 		
-		t.preorder(t.root);
+		ArrayList<Product> list = t.inorderTraversal();
+		
+		for(int i=0; i<list.size(); i++ ){
+			System.out.println(list.get(i).getId());
+		}
 	}
 	
 }

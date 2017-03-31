@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 /**
  * Created by ricardo on 26/03/17.
  */
@@ -55,12 +59,22 @@ public class ProductBinarySearchTree {
         }
     }
     
-    public void preorder(Node root) {
-        if(root !=  null) {
-            System.out.printf("%d ",root.element.getId());
-            preorder(root.left);
-            preorder(root.right);
+    public ArrayList<Product> inorderTraversal() {
+    	ArrayList<Product> products = new ArrayList<Product>();   
+        if(this.root !=null){
+        	this.inorderTraversal(products, this.root);
         }
+        return products;
+    }
+ 
+    public void inorderTraversal(ArrayList<Product> products, Node p){
+        if(p.left!=null)
+        	inorderTraversal(products,p.left);
+ 
+        products.add(p.element);
+ 
+        if(p.right!=null)
+        	inorderTraversal(products,p.right);
     }
 
     public Product findProduct(int id){
