@@ -15,10 +15,12 @@ public class ProductBinarySearchTreeTest {
 			t.insert(products.get(i));
 		}
 		
-		ArrayList<Product> list = t.inorderTraversal();
+		Product p = t.findByName("p10");
+		System.out.println(p.getName()); 
 		
+		ArrayList<Product> list = t.inorderTraversal();		
 		for(int i=0; i<list.size(); i++ ){
-			System.out.println(list.get(i).getId());
+			System.out.println(list.get(i).getName());
 		}
 	}
 	

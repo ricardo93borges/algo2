@@ -103,6 +103,16 @@ public class ProductBinarySearchTree {
         }
         return answer;
     }
+    
+    public Product findByName(String name){
+        ArrayList<Product> products = this.inorderTraversal();
+        for(int i=0; i<products.size(); i++){
+        	if(products.get(i).getName().equalsIgnoreCase(name)){
+        		return products.get(i);
+        	}
+        }
+        return null;
+    }
 
     public void remove(int id, Node root){
         Node target = this.find(id);
