@@ -62,4 +62,21 @@ public class Product implements Comparable<Product>{
     public void setPrice(int price) {
         this.price = price;
     }
+
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Código: ");
+		sb.append(this.getId());
+		sb.append("\nNome: ");
+		sb.append(this.getName());
+		sb.append("\nCategoria: ");
+		sb.append(this.getCategory());
+		sb.append("\nPreço: ");
+		sb.append(this.getPrice());
+		return sb.toString();
+	}
+    
+    
 }
