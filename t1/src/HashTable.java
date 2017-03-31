@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class HashTable {
 	
@@ -48,9 +49,27 @@ public class HashTable {
 			ProductBinarySearchTree t = new ProductBinarySearchTree();
 			t.insert(p);
 			Entry e = new Entry(key, t);
+			this.table[key] = e;
 		}else{
 			this.table[key].value.insert(p);
 		}
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<SIZE; i++){
+			if(this.table[i] == null)
+				continue;
+			ArrayList<Product> list = this.table[i].value.inorderTraversal();
+			for(int j=0; j<list.size(); j++){
+				sb.append(list.get(j).toString());
+				sb.append("\n\n");
+			}			
+		}
+		return sb.toString();
+	}
+	
+	
 	
 }

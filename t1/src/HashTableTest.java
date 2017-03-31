@@ -14,6 +14,8 @@ public class HashTableTest {
 		for(int i=0; i<products.size(); i++ ){
 			ht.put(products.get(i));
 		}
+		
+		System.out.println(ht.toString());
 	}
 	
 }
