@@ -63,27 +63,35 @@ public class ProductBinarySearchTree {
         }
     }
 
-    public Node find(Product element){
-        return this.find(element, this.root);
+    public Product findProduct(int id){
+        Node n = this.find(id, this.root);
+        if(n == null){
+        	return null;
+        }
+        return n.element;
+    }
+    
+    public Node find(int id){
+        return this.find(id, this.root);
     }
 
-    private Node find(Product element, Node node){
+    private Node find(int id, Node node){
         if(node == null){
             return null;
         }
         Node answer = node;
-        if(element.compareTo(node.element) == 0){
+        if(id == node.element.getId()){
             answer = node;
-        }else if(element.compareTo(node.element) == -1){
-            answer = find(element, node.left);
+        }else if(id < node.element.getId()){
+            answer = find(id, node.left);
         }else{
-            answer = find(element, node.right);
+            answer = find(id, node.right);
         }
         return answer;
     }
 
-    public void remove(Product element, Node root){
-        Node target = this.find(element, root);
+    public void remove(int id, Node root){
+        Node target = this.find(id);
         if(target == null){
             return;
         }
@@ -109,7 +117,7 @@ public class ProductBinarySearchTree {
         }else{//Target has chidren
         	Product min = minValue(target.right);
             target.element = min;
-            this.remove(min, target.right);
+            this.remove(min.getId(), target.right);
         }
     }
 

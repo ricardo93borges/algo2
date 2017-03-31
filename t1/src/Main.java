@@ -4,7 +4,9 @@
 public class Main {
 
     public static void main(String[] args){
+    
+    	//ProductBinarySearchTreeTest test = new ProductBinarySearchTreeTest();
+    	HashTableTest htt = new HashTableTest();
     	
-    	ProductBinarySearchTreeTest test = new ProductBinarySearchTreeTest();
     }
 }

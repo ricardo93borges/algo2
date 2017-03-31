@@ -22,6 +22,10 @@ public class HashTable {
 	private final static int SIZE = 13;
 	private Entry[] table;
 	
+	public int generateKey(int productId){
+		return productId%13;	
+	}
+	
 	public HashTable() {
 		this.table = new Entry[SIZE];
 		for(int i=0; i<SIZE; i++){
@@ -29,13 +33,24 @@ public class HashTable {
 		}
 	}
 
-	public Product get(int key){
-		//TODO
+	public Product get(int productId){
+		int key = this.generateKey(productId);
+		if(this.table[key] == null){
+			return null;
+		}else{
+			return this.table[key].value.findProduct(productId);
+		}
 	}
 	
 	public void put(Product p){
-		int key = p.getId()%13;	
-		//TODO
+		int key = this.generateKey(p.getId());	
+		if(this.table[key] == null){
+			ProductBinarySearchTree t = new ProductBinarySearchTree();
+			t.insert(p);
+			Entry e = new Entry(key, t);
+		}else{
+			this.table[key].value.insert(p);
+		}
 	}
 	
 }
