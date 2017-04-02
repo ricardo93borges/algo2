@@ -114,8 +114,13 @@ public class ProductBinarySearchTree {
         return null;
     }
 
-    public void remove(int id, Node root){
+    public Product remove(int id){
         Node target = this.find(id);
+        this.remove(target, this.root);
+        return target.element;
+    }
+
+    public void remove(Node target, Node root){
         if(target == null){
             return;
         }
@@ -139,15 +144,15 @@ public class ProductBinarySearchTree {
                 target.father.right = target.right;
             }
         }else{//Target has chidren
-        	Product min = minValue(target.right);
-            target.element = min;
-            this.remove(min.getId(), target.right);
+        	Node min = minValue(target.right);
+            target.element = min.element;
+            this.remove(min, target.right);
         }
     }
 
-    public Product minValue(Node root) {
+    public Node minValue(Node root) {
         if (root.left == null) {
-            return root.element;
+            return root;
         } else {
             return this.minValue(root.left);
         }
