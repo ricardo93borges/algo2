@@ -87,6 +87,24 @@ public class HashTable {
 		}
 		return productLowerPrice;
 	}
+	
+	public Product findProductByName(String name){
+		if(!this.nameKeyMap.containsKey(name))
+			return null;
+	
+		int key = this.nameKeyMap.get(name);
+		if(this.table[key] == null)
+			return null;
+		
+		ProductBinarySearchTree t = this.table[key].value;
+		ArrayList<Product> products = t.inorderTraversal();
+		for(int i=0; i<products.size(); i++){
+			if(products.get(i).getName().equals(name)){
+				return products.get(i);
+			}
+		}	
+		return null;		
+	}
 
 	/**
 	 * Gera chave para a hashtable
