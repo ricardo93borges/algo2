@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Main {
 	static HashTable table = new HashTable();
 
 	public static void main(String[] args) {
-		try {
+		//try {
 			Scanner scanner = new Scanner(System.in);
 			int opt = 1;
 
@@ -20,7 +21,7 @@ public class Main {
 						+ "\n 6- Para Exibir todos os produtos" + "\n 0- Para sair \n");
 
 				opt = scanner.nextInt();
-					
+
 				switch (opt) {
 				case 1:
 					addProduct();
@@ -42,19 +43,19 @@ public class Main {
 					break;
 				case 0:
 					System.out.println("Fim.");
-					//scanner.close();
+					// scanner.close();
 					break;
 				default:
 					System.out.println("Opção inválida.");
-					//scanner.close();
+					// scanner.close();
 					break;
 				}
 			}
-		} catch (InputMismatchException e) {
+		/*} catch (InputMismatchException e) {
 			System.out.println("Opção inválida.\nEncerrando.");
 		} catch (Exception e) {
 			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
-		}
+		}*/
 	}
 
 	public static void addProduct() {
@@ -134,14 +135,33 @@ public class Main {
 	}
 
 	public static void deleteProduct() {
-
+		//try {
+			Scanner s = new Scanner(System.in);
+			System.out.println("\nInforme o código:\n");
+			int id = s.nextInt();
+			table.delete(id);
+		/*} catch (InputMismatchException e) {
+			System.out.println("\nInformação inválida:\n");
+		} catch (Exception e) {
+			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
+		}*/
 	}
 
 	public static void getProductByPrice() {
-
+		try {
+			System.out.println("\nProduto com o menor preço\n\n");
+			Product p = table.getProductLowerPrice();
+			p.toString();
+		} catch (Exception e) {
+			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
+		}
 	}
 
 	public static void getAllProducts() {
-
+		try {
+			table.toString();
+		} catch (Exception e) {
+			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
+		}
 	}
 }

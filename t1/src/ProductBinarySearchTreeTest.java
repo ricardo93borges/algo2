@@ -17,11 +17,11 @@ public class ProductBinarySearchTreeTest {
 		
 		Product p = t.findByName("p10");
 		String s = p.toString();
-		System.out.println(s); 
+		//System.out.println(s); 
 		
 		ArrayList<Product> list = t.inorderTraversal();		
 		for(int i=0; i<list.size(); i++ ){
-			//System.out.println(list.get(i).getName());
+			System.out.println(list.get(i).getName());
 		}
 	}
 	
