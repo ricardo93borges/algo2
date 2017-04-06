@@ -115,6 +115,9 @@ public class ProductBinarySearchTree {
     }
 
     public Product remove(int id){
+    	if(this.root == null){
+    		return null;
+    	}
         Node target = this.find(id);
         this.remove(target, this.root);
         return target.element;
@@ -125,7 +128,11 @@ public class ProductBinarySearchTree {
             return;
         }
 
-        if(target.left == null && target.right == null){//Target has no children
+        if(target.element.getId() == root.element.getId()){//tree has only one node
+        	if(target.left == null && target.right == null){
+        		this.root = null;
+        	}
+        }else if(target.left == null && target.right == null){//Target has no children
             if(target.father.left.element.compareTo(target.element) == 0){
                 target.father.left = null;
             }else{

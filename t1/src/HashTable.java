@@ -80,8 +80,8 @@ public class HashTable {
 			}
 			ArrayList<Product> products = this.table[i].value.inorderTraversal();
 			for(int j=0; j<products.size(); j++) {
-				if (productLowerPrice == null || productLowerPrice.getPrice() > products.get(i).getPrice()) {
-					productLowerPrice = products.get(i);
+				if (productLowerPrice == null || productLowerPrice.getPrice() > products.get(j).getPrice()) {
+					productLowerPrice = products.get(j);
 				}
 			}
 		}
@@ -171,7 +171,9 @@ public class HashTable {
 		if(this.table[key] != null){
 			Product p = this.table[key].value.remove(productId);
 			//Remove do nameKeyMap
-			this.nameKeyMap.remove(p.getName());
+			if(p != null){
+				this.nameKeyMap.remove(p.getName());
+			}
 		}
 	}
 

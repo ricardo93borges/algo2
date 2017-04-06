@@ -10,7 +10,7 @@ public class Main {
 	static HashTable table = new HashTable();
 
 	public static void main(String[] args) {
-		//try {
+		try {
 			Scanner scanner = new Scanner(System.in);
 			int opt = 1;
 
@@ -51,11 +51,13 @@ public class Main {
 					break;
 				}
 			}
-		/*} catch (InputMismatchException e) {
+
+		} catch (InputMismatchException e) {
 			System.out.println("Opção inválida.\nEncerrando.");
 		} catch (Exception e) {
 			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
-		}*/
+		}
+
 	}
 
 	public static void addProduct() {
@@ -75,7 +77,9 @@ public class Main {
 			System.out.println("\nInforme o nome:\n");
 			name = s.next();
 
-			System.out.println("\nInforme o número da categoria:\n");
+			System.out.println("\nInforme o número da categoria");
+			System.out.println("\nCategorias:\n1-futebol\n2-basquete\n3-vôlei\n4-tênis\n5-caça\n6-pesca\n");
+
 			category = s.nextInt();
 
 			System.out.println("\nInforme o preço:\n");
@@ -135,23 +139,24 @@ public class Main {
 	}
 
 	public static void deleteProduct() {
-		//try {
+		try {
 			Scanner s = new Scanner(System.in);
 			System.out.println("\nInforme o código:\n");
 			int id = s.nextInt();
 			table.delete(id);
-		/*} catch (InputMismatchException e) {
+			System.out.println("\nProduto removido.\n");
+
+		} catch (InputMismatchException e) {
 			System.out.println("\nInformação inválida:\n");
 		} catch (Exception e) {
 			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
-		}*/
+		}
 	}
 
 	public static void getProductByPrice() {
 		try {
-			System.out.println("\nProduto com o menor preço\n\n");
 			Product p = table.getProductLowerPrice();
-			p.toString();
+			System.out.println("\nProduto com o menor preço: \n\n" + p.toString() + "\n");
 		} catch (Exception e) {
 			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
 		}
@@ -159,7 +164,7 @@ public class Main {
 
 	public static void getAllProducts() {
 		try {
-			table.toString();
+			System.out.println("\nTodos os produtos: \n\n" + table.toString() + "\n");
 		} catch (Exception e) {
 			System.out.println("\nOcorreu um erro:\n" + e.getMessage() + "\n");
 		}
