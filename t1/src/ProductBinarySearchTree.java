@@ -7,7 +7,7 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
  */
 public class ProductBinarySearchTree {
 
-	public static class Node {
+	private static class Node {
 
         public Node father;
         public Node left;
@@ -22,7 +22,7 @@ public class ProductBinarySearchTree {
         }
     }
 	
-	public Node root;
+	private Node root;
 	
 	public ProductBinarySearchTree(Node root) {
         this.root = root;

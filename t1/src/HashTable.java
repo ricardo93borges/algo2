@@ -160,13 +160,6 @@ public class HashTable {
 	public void delete(int productId){
 		int key = this.generateKey(productId);
 
-		//Atualiza produto com menor preço se necessario
-		if(this.productLowerPrice.getId() == productId){
-			this.productLowerPrice = null;
-			Product p = this.findProductLowerPrice();
-			this.productLowerPrice = p;
-		}
-
 		//Remove da hashtable
 		if(this.table[key] != null){
 			Product p = this.table[key].value.remove(productId);
@@ -174,6 +167,13 @@ public class HashTable {
 			if(p != null){
 				this.nameKeyMap.remove(p.getName());
 			}
+		}
+
+		//Atualiza produto com menor preço se necessario
+		if(this.productLowerPrice.getId() == productId){
+			this.productLowerPrice = null;
+			Product p = this.findProductLowerPrice();
+			this.productLowerPrice = p;
 		}
 	}
 
